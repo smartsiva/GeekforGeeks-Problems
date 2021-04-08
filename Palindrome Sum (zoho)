@@ -1,0 +1,65 @@
+#include <bits/stdc++.h>
+using namespace std;
+class Solution {
+  public:
+    int rev(int m)
+    {
+        int reverse = 0;
+		int remainder = 0;
+        while(m != 0){
+		         remainder = m % 10;
+		         reverse = (reverse * 10 ) + remainder;
+		         m /= 10;
+		    }
+		return reverse;
+    }
+    int isPalin(int n)
+    {
+        int m = rev(n);
+        if (m==n)
+            return 1;
+        else 
+            return 0;
+    }
+    long long isSumPalindrome(long long n){
+        // code here
+        int i = 5;
+        int x,z;
+        if(isPalin(n))
+            return n;
+        while(i--)
+    {
+        z=0;
+        x=rev(n);
+        z=x+n;
+        if(isPalin(z)==1)
+            {
+                break;
+            }
+        else
+        {
+            n=z;
+            continue;
+        }
+    }
+    if(i==-1)
+    {
+        return -1;
+    }
+    else
+    {
+     return z;
+    }   
+    }
+};
+int main() {
+    int t;
+    cin >> t;
+    while (t--) {
+        long long n;
+        cin >> n;
+        Solution ob;
+        cout<<ob.isSumPalindrome(n)<<endl;
+    }
+    return 0;
+}
